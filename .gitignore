@@ -1,0 +1,8 @@
+# exclude testfiles
+
+*.csv
+*.docx
+
+# exclude target directory
+
+target
