@@ -26,12 +26,12 @@ Follow the steps below to run the application:
 4. Open command line.
 
 5. Enter one of the following commands:<br>
-		`java -jar revo.jar -f <filename>` to display the applications help section.<br>
-		`java -jar revo.jar -f <filename> -s` to display a gross sum of your expenses in your Revolut summary.<br>
-		`java -jar revo.jar -f <filename> -d` to display a net sum of your expenses (gross sum reduced by reimbursements from other users).<br>
+		a. `java -jar revo.jar -f <filename>` to display the applications help section.<br>
+		b. `java -jar revo.jar -f <filename> -s` to display a gross sum of your expenses in your Revolut summary.<br>
+		c. `java -jar revo.jar -f <filename> -d` to display a net sum of your expenses (gross sum reduced by reimbursements from other users).<br>
 	*You can use all the options simultaneously, so the following will also work: `java -jar revo.jar -f <filename> -s -d`*<br>
 	
-	> **NOTE** `<filename>` pertains to a full file name with extension (e.g. testfile.csv). If the file of your choice is stored in a different location than the executable jar file, you should include the relative path in your `<filename>` (e.g. myFolder/testfile.csv).
+	> **NOTE** `<filename>` pertains to a full file name with extension (e.g. testfile.csv). If the file of your choice is stored in a different location than the executable jar file, you should include the relative path in your `<filename>` (e.g. myFolder/testfile.csv).<br>
 	> **NOTE** The application accepts csv files with a certain column schema, as exported from Revolut application v7.12.1. No backward or future compatibility can be guaranteed. 
 					
 	 
