@@ -39,11 +39,11 @@ final class FileNames {
 		BufferedWriter writerOkFile = Files.newBufferedWriter(Paths.get(FileNames.TEST_FILE_CORRECT));
 		
 		CSVPrinter printerOkFile = new CSVPrinter(writerOkFile, 
-				CSVFormat.EXCEL.withDelimiter(';').withHeader("Reference", "Paid In (PLN)", "Paid Out (PLN)"));
+				CSVFormat.EXCEL.withDelimiter(';').withHeader("Completed Date", "Reference", "Paid In (PLN)", "Paid Out (PLN)", "Category"));
 		
-		printerOkFile.printRecord("Od Jan Kowalski", "100,00Â", "");
-		printerOkFile.printRecord("Sklep", "", "50,00Â");
-		printerOkFile.printRecord("Targ", "", "20,00Â");
+		printerOkFile.printRecord("31.07", "Od Jan Kowalski", "100,00Â", "", "Zakupy");
+		printerOkFile.printRecord("25.07", "Sklep", "", "50,00Â", "Spożywcze");
+		printerOkFile.printRecord("20.06", "Targ", "", "20,00Â", "");
 				
 		printerOkFile.flush();
 		printerOkFile.close();
