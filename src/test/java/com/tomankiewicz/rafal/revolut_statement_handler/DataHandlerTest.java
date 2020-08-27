@@ -1,6 +1,7 @@
 package com.tomankiewicz.rafal.revolut_statement_handler;
 
 import static com.github.stefanbirkner.systemlambda.SystemLambda.catchSystemExit;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.AfterAll;
@@ -70,6 +71,32 @@ class DataHandlerTest {
 		
 		double sum = dataHandler.provideSpendingsIncomeReduced(FileNames.TEST_FILE_CORRECT);
 		assertEquals(-30, sum);
+	}
+	
+	@Test
+	void dataHandlerShouldProvideFileName() {
+		
+		String fileInfo = dataHandler.provideFileInfo(FileNames.TEST_FILE_CORRECT);
+		
+		assertTrue(fileInfo.contains(FileNames.TEST_FILE_CORRECT));
+	}
+	
+	@Test
+	void dataHandlerShouldProvideTheFilesTimespan() {
+		
+		String fileInfo = dataHandler.provideFileInfo(FileNames.TEST_FILE_CORRECT);
+		
+		assertTrue(fileInfo.contains("TIME PERIOD: "));
+
+	}
+	
+	@Test
+	void dataHandlerShouldProvideTheNumberOfTransactions() {
+		
+		String fileInfo = dataHandler.provideFileInfo(FileNames.TEST_FILE_CORRECT);
+		
+		assertTrue(fileInfo.contains("NUMBER OF TRANSACTIONS: "));
+
 	}
 
 }

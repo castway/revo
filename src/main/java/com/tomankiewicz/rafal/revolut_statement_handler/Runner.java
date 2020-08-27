@@ -21,11 +21,14 @@ public class Runner {
 			
 			String file = line.getOptionValue("filename");
 			
+			dataHandler = new DataHandler();
+			
+			String fileInfo = dataHandler.provideFileInfo(file);
+			System.out.printf(fileInfo);
+			
 			if (line.getOptions().length == 1) {
 				argParser.displayHelp();
 			}
-			
-			dataHandler = new DataHandler();
 			
 			if (line.hasOption("sum")) {
 				double sum = dataHandler.provideSpendingsSum(file);

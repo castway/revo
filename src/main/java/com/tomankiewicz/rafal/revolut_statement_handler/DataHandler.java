@@ -1,6 +1,7 @@
 package com.tomankiewicz.rafal.revolut_statement_handler;
 
 import java.util.ArrayList;
+import java.util.Formatter;
 import java.util.List;
 
 import org.apache.commons.csv.CSVRecord;
@@ -64,6 +65,40 @@ class DataHandler {
 								  .sum();
 		
 		return spendings - income;
+	}
+
+	public String provideFileInfo(String file) {
+
+		Iterable<CSVRecord> records = dataPreper.getIterableData(file);
+		List<TwoColumnHolder> fileInfo = new ArrayList<>();
+		
+		for (CSVRecord record : records) {
+			try {
+				fileInfo.add(new TwoColumnHolder(record.get("Completed Date"), record.get("Category")));
+			} catch (IllegalArgumentException e) {
+				System.err.println("Unrecognized file format: " + e.getMessage());
+				System.exit(1);
+			}
+		}
+		
+		StringBuilder sb = new StringBuilder();
+		Formatter formatter = new Formatter(sb);
+		String section = "***********************************";
+		String fileName = "DATA SOURCE FILE: " + file;
+		String timeSpan = "TIME PERIOD: " + 
+							fileInfo.get(fileInfo.size() - 1).getFirstColumn() + " - " + 
+							fileInfo.get(0).getFirstColumn();
+		String transactionCount = "NUMBER OF TRANSACTIONS: " + fileInfo.size();
+		
+		formatter.format("%s%n", section);
+		formatter.format("%s%n", fileName);
+		formatter.format("%s%n", timeSpan);
+		formatter.format("%s%n", transactionCount);
+		formatter.format("%s%n", section);
+		
+		formatter.close();
+		
+		return sb.toString();
 	}
 
 }
